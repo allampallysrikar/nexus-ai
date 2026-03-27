@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-Powered Multilingual NLP Platform for Sentiment Analysis, Summarization, and Named Entity Recognition.">
+    <title>Nexus | AI NLP Platform</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    
+    <main class="app-container glass-panel">
+        <header class="app-header">
+            <h1><i class="fa-solid fa-brain"></i> Nexus AI</h1>
+            <p>Multilingual Text Intelligence Platform</p>
+        </header>
+        
+        <section class="input-section">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="target-lang"><i class="fa-solid fa-language"></i> Target Language</label>
+                    <select id="target-lang">
+                        <option value="te" selected>Telugu</option>
+                        <option value="hi">Hindi</option>
+                        <option value="ta">Tamil</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="ja">Japanese</option>
+                        <option value="ko">Korean</option>
+                        <option value="it">Italian</option>
+                        <option value="pt">Portuguese</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="textarea-wrapper">
+                <textarea id="text-input" placeholder="Enter text in any language to analyze... (Min 30 words for summarization)"></textarea>
+                <div class="char-count"><span id="count">0</span> chars</div>
+            </div>
+            
+            <button id="analyze-btn" class="primary-btn">
+                <span>Analyze Text</span>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </button>
+        </section>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading-container hidden">
+            <div class="spinner"></div>
+            <p>Nexus is processing your text using multiple AI models. This may take a moment...</p>
+        </div>
+
+        <section id="results" class="results-section hidden">
+            <!-- Navigation Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" data-target="translations"><i class="fa-solid fa-language"></i> Translations</button>
+                <button class="tab-btn" data-target="sentiment"><i class="fa-solid fa-face-smile"></i> Sentiment</button>
+                <button class="tab-btn" data-target="summary"><i class="fa-solid fa-file-lines"></i> Summary</button>
+                <button class="tab-btn" data-target="entities"><i class="fa-solid fa-tags"></i> Entities (NER)</button>
+            </div>
+
+            <div class="tab-content-container">
+                <!-- Translations -->
+                <div id="translations" class="tab-pane active">
+                    <div class="result-card">
+                        <h3><i class="fa-solid fa-earth-americas"></i> English Translation (Base)</h3>
+                        <p id="en-trans-result" class="result-text"></p>
+                    </div>
+                    <div class="result-card highlight">
+                        <h3><i class="fa-solid fa-language"></i> Target Translation</h3>
+                        <p id="target-trans-result" class="result-text"></p>
+                    </div>
+                </div>
+
+                <!-- Sentiment -->
+                <div id="sentiment" class="tab-pane">
+                    <div class="result-card center-card">
+                        <h3 id="sentiment-label">NEUTRAL</h3>
+                        <div class="progress-bar-container">
+                            <div id="sentiment-bar" class="progress-bar"></div>
+                        </div>
+                        <p>Confidence: <span id="sentiment-score">0.0</span></p>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div id="summary" class="tab-pane">
+                    <div class="result-card">
+                        <h3><i class="fa-solid fa-list-ul"></i> AI Summary</h3>
+                        <p id="summary-result" class="result-text"></p>
+                    </div>
+                </div>
+
+                <!-- Entities -->
+                <div id="entities" class="tab-pane">
+                    <div class="result-card">
+                        <h3><i class="fa-solid fa-magnifying-glass"></i> Extracted Entities</h3>
+                        <div id="entities-container" class="entities-tags">
+                            <!-- Entities will be injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
