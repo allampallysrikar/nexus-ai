@@ -80,7 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const sentiment = data.sentiment;
                 sentimentLabel.textContent = sentiment.label;
                 sentimentLabel.className = ''; 
-                sentimentLabel.classList.add(`sentiment-${sentiment.label.toLowerCase()}`);
+                
+                // Sanitize label for CSS class name
+                const safeLabel = sentiment.label.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+                sentimentLabel.classList.add(`sentiment-${safeLabel}`);
                 
                 sentimentScore.textContent = sentiment.score;
                 sentimentBar.style.width = `${Math.min(sentiment.score * 100, 100)}%`;

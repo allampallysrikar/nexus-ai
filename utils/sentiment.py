@@ -25,7 +25,7 @@ def get_sentiment(text):
             return label, score
         else:
             print("HF API Error:", response.text)
-            return "UNKNOWN (API Rate Limited)", 0.0
+            return "UNKNOWN", 0.0
 
     except Exception as e:
         print("Sentiment Error:", e)
