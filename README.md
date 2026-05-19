@@ -1,3 +1,14 @@
+---
+title: Nexus AI
+emoji: 🤖
+colorFrom: purple
+colorTo: blue
+sdk: gradio
+sdk_version: 4.44.0
+app_file: app.py
+pinned: false
+---
+
 # 🤖 Nexus AI — Multilingual NLP Platform
 
 A world-class, responsive NLP web application built with **Flask**, **Vanilla JavaScript**, and **HuggingFace Transformers**. Perform Translation, Sentiment Analysis, Text Summarization, and Named Entity Recognition — all in one seamless glassmorphic interface.
