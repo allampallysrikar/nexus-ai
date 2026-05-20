@@ -65,7 +65,7 @@ def run_pipeline(text, target_language):
     try:
         entities = extract_entities(english_text)
         if entities:
-            lines = [f"• **{ent['word']}** → {ent['entity_group']}" for ent in entities]
+            lines = [f"• **{ent['word']}** → {ent.get('entity_group', ent.get('entity', 'UNKNOWN'))}" for ent in entities]
             ner_output = "\n".join(lines)
         else:
             ner_output = "No named entities detected."
